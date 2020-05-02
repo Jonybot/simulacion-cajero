@@ -4,6 +4,11 @@
 #include<fstream>
 using namespace std;
 
+#define pausa \
+ cout<<"\nTeclea enter para continuar...";\
+ cin.ignore();
+
+
 void menu();
 int leerArchivo();
 void escribirArchivo(int);
@@ -44,8 +49,7 @@ void menu(){
             case 1:
                 cout<<"\t--------Cuenta--------\n\n";
                 cout<<"     Su saldo total es de: $"<<saldoTotal<<endl;
-                cout<<"\nTeclea enter para continuar...";
-                cin.ignore();
+                pausa
             break;
             case 2:
                 cout<<"\t-------Deposito--------\n\n";
@@ -54,18 +58,22 @@ void menu(){
                 depositar(saldoDepos);
             break;
             case 3:
-                if(saldoTotal < 0){
-                    cout<<"No puede retirar porque su saldo es de $0.00\n";
-                }else{
-                    cout<<"\t-------Retiro--------\n\n";
-                    cout<<"      Cantidad a retirar: $";
-                    cin>>saldoRet;
-                    retirar(saldoRet);
-                }
-            default:
-                cout<<"Esta opción no existe, vuelve a intentarlo\n";
-                cout<<"Teclea enter para continuar...";
+                cout<<"\t-------Retiro--------\n\n";
+                cout<<"      Cantidad a retirar: $";
+                cin>>saldoRet;
                 cin.ignore();
+                 if(saldoRet>saldoTotal){
+                    cout<<"\nTu crédito no es suficiente\n";
+                    pausa
+                }else{
+                    retirar(saldoRet);
+                    }
+            break;
+            default:
+                if(opc!=4){
+                    cout<<"Esta opción no existe, vuelve a intentarlo\n";
+                    pausa
+                }
             break;
         }
 
