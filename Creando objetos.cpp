@@ -26,22 +26,30 @@ void menu(){
     char rpt;
 
     do{
-        cout<<"\t------Bienvenido------\n\n";
-        cout<<"1. Ver saldo\n";
-        cout<<"2. Depositar\n";
-        cout<<"3. Retirar\n";
-        cout<<"4. Salir\n";
-        cout<<"Opción: ";
+        cout<<"\t ----------------------\n";
+        cout<<"\t|      Bienvenido      |\n";
+        cout<<"\t ----------------------\n";
+        cout<<"\t|1. Ver saldo          |\n";
+        cout<<"\t|2. Depositar          |\n";
+        cout<<"\t|3. Retirar            |\n";
+        cout<<"\t|4. Salir              |\n";
+        cout<<"\t ----------------------\n";
+        cout<<"\tOpción: ";
         cin>>opc;
         cin.ignore();
         
+        system("clear");
+
         switch (opc){
             case 1:
-                cout<<"Su saldo total es de: $"<<saldoTotal<<endl;
+                cout<<"\t--------Cuenta--------\n\n";
+                cout<<"     Su saldo total es de: $"<<saldoTotal<<endl;
+                cout<<"\nTeclea enter para continuar...";
                 cin.ignore();
             break;
             case 2:
-                cout<<"Cantidad a depositar: $";
+                cout<<"\t-------Deposito--------\n\n";
+                cout<<"      Cantidad a depositar: $";
                 cin>>saldoDepos;
                 depositar(saldoDepos);
             break;
@@ -49,12 +57,14 @@ void menu(){
                 if(saldoTotal < 0){
                     cout<<"No puede retirar porque su saldo es de $0.00\n";
                 }else{
-                    cout<<"Cantidad a retirar: $";
+                    cout<<"\t-------Retiro--------\n\n";
+                    cout<<"      Cantidad a retirar: $";
                     cin>>saldoRet;
                     retirar(saldoRet);
                 }
             default:
                 cout<<"Esta opción no existe, vuelve a intentarlo\n";
+                cout<<"Teclea enter para continuar...";
                 cin.ignore();
             break;
         }
